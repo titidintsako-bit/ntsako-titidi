@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ntsako Titidi is an AI engineer and systems builder working on local AI runtimes, deployment hygiene, and code-first product experiments."
+    />
+    <meta name="author" content="Ntsako Titidi" />
+    <meta property="og:title" content="Ntsako Titidi / AI Engineer" />
+    <meta
+      property="og:description"
+      content="Ntsako Titidi is an AI engineer and systems builder working on local AI runtimes, deployment hygiene, and code-first product experiments."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ntsakotitidi.vercel.app/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ntsako Titidi / AI Engineer" />
+    <meta
+      name="twitter:description"
+      content="Local AI runtimes, deployment hygiene, and code-first product experiments."
+    />
+    <meta name="theme-color" content="#0D0D0B" />
+    <link rel="canonical" href="https://ntsakotitidi.vercel.app/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Ntsako Titidi / AI Engineer</title>
+    <style>
+      :root {
+        --bg: #0d0d0b;
+        --surface: #141410;
+        --text: #f5f0e8;
+        --muted: rgba(245, 240, 232, 0.6);
+        --soft: rgba(245, 240, 232, 0.5);
+        --rule: rgba(245, 240, 232, 0.15);
+        --accent: #e8a020;
+        --page: min(1180px, calc(100vw - 48px));
+        --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+          monospace;
+        --display: "Syne", system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: var(--bg);
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--display);
+        font-size: 16px;
+        line-height: 1.6;
+        text-rendering: optimizeLegibility;
+      }
+
+      body::selection {
+        background: rgba(232, 160, 32, 0.25);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 150ms ease;
+      }
+
+      a:hover {
+        color: var(--accent);
+      }
+
+      a:focus-visible {
+        outline: 1px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      p,
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+      }
+
+      .skip-link {
+        position: fixed;
+        left: 18px;
+        top: 18px;
+        z-index: 20;
+        transform: translateY(-160%);
+        background: var(--text);
+        color: var(--bg);
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .site-nav {
+        position: absolute;
+        top: 30px;
+        left: max(24px, calc((100vw - var(--page)) / 2));
+        z-index: 5;
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--accent);
+      }
+
+      .site-nav a {
+        letter-spacing: 0.02em;
+      }
+
+      .cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 6px;
+        height: 6px;
+        border: 0;
+        border-radius: 50%;
+        background: #e8a020;
+        pointer-events: none;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: width 150ms ease, height 150ms ease, opacity 150ms ease;
+      }
+
+      .cursor-dot.is-ready {
+        opacity: 1;
+      }
+
+      .cursor-dot.is-ready.is-project-hover {
+        width: 24px;
+        height: 24px;
+        opacity: 0.2;
+      }
+
+      body.has-custom-cursor,
+      body.has-custom-cursor a,
+      body.has-custom-cursor .project-row {
+        cursor: none;
+      }
+
+      main {
+        min-height: 100vh;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        width: var(--page);
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        padding: 104px 0 86px;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(245, 240, 232, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(245, 240, 232, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+
+      .hero-inner {
+        z-index: 1;
+        text-align: center;
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: clamp(48px, 9vw, 96px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .hero-role,
+      .hero-location,
+      .hero-links {
+        font-family: var(--mono);
+      }
+
+      .hero-role {
+        margin-top: 20px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+
+      .hero-location {
+        margin-top: 12px;
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .typewriter-cursor {
+        color: var(--accent);
+        animation: cursor-blink 760ms step-end infinite;
+      }
+
+      @keyframes cursor-blink {
+        0%,
+        45% {
+          opacity: 1;
+        }
+
+        46%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .hero-links {
+        position: absolute;
+        z-index: 1;
+        bottom: 38px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        font-size: 13px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .hero-links a {
+        transition: color 160ms ease;
+      }
+
+      .hero-links a:hover {
+        color: var(--accent);
+      }
+
+      .hero-rule {
+        width: 1px;
+        height: 18px;
+        background: var(--rule);
+      }
+
+      .hero-reveal {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      .hero-links.hero-reveal {
+        transform: translate(-50%, 8px);
+      }
+
+      body.is-loaded .hero-reveal {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 520ms ease, transform 520ms ease;
+        transition-delay: var(--delay);
+      }
+
+      body.is-loaded .hero-links.hero-reveal {
+        transform: translate(-50%, 0);
+      }
+
+      .content-section {
+        width: var(--page);
+        margin: 0 auto;
+        padding: 104px 0;
+        border-top: 0.5px solid var(--rule);
+      }
+
+      .section-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 500ms ease-out, transform 500ms ease-out;
+      }
+
+      .section-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-label {
+        margin-bottom: 28px;
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1;
+        color: var(--accent);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .about-grid,
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 48px;
+        align-items: start;
+      }
+
+      .about-copy,
+      .contact-copy {
+        max-width: 760px;
+      }
+
+      h2 {
+        font-family: var(--display);
+        font-size: clamp(36px, 6vw, 72px);
+        font-weight: 700;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .text-stack {
+        margin-top: 28px;
+        display: grid;
+        gap: 18px;
+        max-width: 720px;
+      }
+
+      .text-stack p {
+        font-size: clamp(17px, 2vw, 21px);
+        line-height: 1.55;
+        color: rgba(245, 240, 232, 0.78);
+      }
+
+      .projects {
+        padding-bottom: 96px;
+      }
+
+      .project-list {
+        border-top: 0.5px solid var(--rule);
+      }
+
+      .project-row {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: 48px;
+        align-items: center;
+        padding: 20px 0 20px 17px;
+        margin-left: -20px;
+        border-left: 3px solid transparent;
+        border-bottom: 0.5px solid var(--rule);
+        background: transparent;
+        transition: background 200ms ease, border-left-color 200ms ease;
+      }
+
+      .projects.section-reveal .project-row {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 500ms ease-out,
+          transform 500ms ease-out,
+          background 200ms ease,
+          border-left-color 200ms ease;
+        transition-delay: var(--row-delay, 0ms), var(--row-delay, 0ms), 0ms, 0ms;
+      }
+
+      .projects.section-reveal.is-visible .project-row {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .project-row:hover {
+        background: var(--surface);
+        border-left-color: var(--accent);
+      }
+
+      .project-number {
+        display: block;
+        margin-bottom: 9px;
+        font-family: var(--mono);
+        font-size: 11px;
+        line-height: 1;
+        color: var(--accent);
+      }
+
+      .project-name {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--text);
+      }
+
+      .project-description {
+        margin-top: 8px;
+        max-width: 760px;
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--soft);
+      }
+
+      .project-links {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 22px;
+        font-family: var(--mono);
+        font-size: 13px;
+        line-height: 1.4;
+        color: var(--muted);
+        text-align: right;
+      }
+
+      .project-links a {
+        position: relative;
+        display: inline-block;
+        transition: color 160ms ease;
+      }
+
+      .project-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 150ms ease;
+      }
+
+      .project-links a:hover {
+        color: var(--accent);
+      }
+
+      .project-links a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .stack-line {
+        font-family: var(--mono);
+        font-size: clamp(14px, 2vw, 18px);
+        line-height: 1.9;
+        color: var(--soft);
+      }
+
+      .contact-links {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px 28px;
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .contact-links a {
+        transition: color 160ms ease;
+      }
+
+      .contact-links a:hover {
+        color: var(--accent);
+      }
+
+      .availability {
+        margin-top: 24px;
+        font-family: var(--mono);
+        font-size: 12px;
+        line-height: 1.7;
+        color: rgba(245, 240, 232, 0.42);
+      }
+
+      .site-footer {
+        width: var(--page);
+        margin: 0 auto;
+        padding: 28px 0 42px;
+        border-top: 0.5px solid var(--rule);
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: rgba(245, 240, 232, 0.36);
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --page: min(100vw - 32px, 1180px);
+        }
+
+        .site-nav {
+          top: 22px;
+          left: 16px;
+        }
+
+        .hero {
+          min-height: 92vh;
+          padding: 92px 0 78px;
+        }
+
+        .hero h1 {
+          font-size: clamp(48px, 16vw, 72px);
+        }
+
+        .hero-location {
+          max-width: 310px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero-links {
+          bottom: 30px;
+          gap: 12px;
+          font-size: 12px;
+        }
+
+        .content-section {
+          padding: 72px 0;
+        }
+
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .section-label {
+          margin-bottom: 22px;
+        }
+
+        h2 {
+          font-size: clamp(34px, 11vw, 52px);
+        }
+
+        .text-stack {
+          margin-top: 22px;
+        }
+
+        .project-row {
+          grid-template-columns: 1fr;
+          gap: 14px;
+          align-items: start;
+          margin-left: 0;
+          padding-top: 20px;
+          padding-bottom: 20px;
+        }
+
+        .project-links {
+          justify-content: flex-start;
+          text-align: left;
+          gap: 18px;
+          flex-wrap: wrap;
+        }
+
+        .stack-line {
+          line-height: 2;
+        }
+
+        .contact-links {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .site-footer {
+          flex-direction: column;
+        }
+      }
+
+      @media (hover: none), (pointer: coarse) {
+        .cursor-dot {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .hero-reveal,
+        body.is-loaded .hero-reveal,
+        .section-reveal,
+        .section-reveal.is-visible,
+        .projects.section-reveal .project-row,
+        .projects.section-reveal.is-visible .project-row {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        .project-row,
+        .project-links a,
+        .project-links a::after,
+        .hero-links a,
+        .contact-links a,
+        a {
+          transition: none;
+        }
+
+        .cursor-dot {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="cursor-dot" aria-hidden="true"></div>
+
+    <nav class="site-nav" aria-label="Site identity">
+      <a href="#top">nt.systems</a>
+    </nav>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <h1 class="hero-reveal" id="hero-title" style="--delay: 0ms">
+            Ntsako Titidi
+          </h1>
+          <p class="hero-role hero-reveal" style="--delay: 150ms">
+            AI Engineer / Systems Builder
+          </p>
+          <p class="hero-location hero-reveal" style="--delay: 300ms">
+            loc: Pretoria, ZA // focus: local runtimes · agent systems · deployment
+          </p>
+          <div
+            class="hero-links hero-reveal"
+            style="--delay: 450ms"
+            aria-label="Hero links"
+          >
+            <a href="#projects">view work ↓</a>
+            <span class="hero-rule" aria-hidden="true"></span>
+            <a href="mailto:titidintsako@gmail.com">titidintsako@gmail.com</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section about-grid" id="about" aria-labelledby="about-title">
+        <div class="section-label">01 / about</div>
+        <div class="about-copy">
+          <h2 id="about-title">I turn rough ideas into working systems.</h2>
+          <div class="text-stack">
+            <p>
+              I build practical AI tools, local runtimes, deployment surfaces,
+              and small product systems that can be opened, tested, and judged
+              by the work they do.
+            </p>
+            <p>
+              My best work happens where product judgment and engineering meet:
+              taking a rough brief, shaping the interface, wiring the runtime,
+              and leaving behind enough evidence for someone technical to trust it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section projects" id="projects" aria-labelledby="projects-title">
+        <div class="section-label">02 / projects</div>
+        <div class="project-list">
+          <article class="project-row" aria-labelledby="project-shaka">
+            <div>
+              <span class="project-number">01</span>
+              <h3 class="project-name" id="project-shaka">Shaka Agent</h3>
+              <p class="project-description">
+                local-first agent runtime with CLI, TUI, gateway, skills, memory,
+                and proof export.
+              </p>
+            </div>
+            <div class="project-links" aria-label="Shaka Agent links">
+              <a href="https://github.com/titidintsako-bit/shaka-agent" rel="noreferrer" target="_blank">GitHub</a>
+              <a href="/assets/shaka-agent-tui.png">TUI screenshot</a>
+            </div>
+          </article>
+
+          <article class="project-row" aria-labelledby="project-stratosyn">
+            <div>
+              <span class="project-number">02</span>
+              <h3 class="project-name" id="project-stratosyn">Stratosyn Core</h3>
+              <p class="project-description">
+                incident simulator with FastAPI control logic, WebSocket telemetry,
+                SQL state, and replay.
+              </p>
+            </div>
+            <div class="project-links" aria-label="Stratosyn Core links">
+              <a href="https://stratosyn-mvp.vercel.app" rel="noreferrer" target="_blank">live demo</a>
+              <a href="https://github.com/titidintsako-bit/stratosyn-mvp" rel="noreferrer" target="_blank">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-row" aria-labelledby="project-public-pulse">
+            <div>
+              <span class="project-number">03</span>
+              <h3 class="project-name" id="project-public-pulse">Public Pulse ZA</h3>
+              <p class="project-description">
+                deployed public-data brief with source labels, guardrails, and
+                scan-friendly South African updates.
+              </p>
+            </div>
+            <div class="project-links" aria-label="Public Pulse ZA links">
+              <a href="https://public-pulse-za.vercel.app" rel="noreferrer" target="_blank">live site</a>
+              <a href="https://github.com/titidintsako-bit/public-pulse-za" rel="noreferrer" target="_blank">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-row" aria-labelledby="project-smilecare">
+            <div>
+              <span class="project-number">04</span>
+              <h3 class="project-name" id="project-smilecare">SmileCare Dental Agent</h3>
+              <p class="project-description">
+                dental intake demo on a reusable appointment-and-escalation agent platform.
+              </p>
+            </div>
+            <div class="project-links" aria-label="SmileCare Dental Agent links">
+              <a href="https://github.com/titidintsako-bit/ai-agency" rel="noreferrer" target="_blank">GitHub</a>
+              <a href="/assets/smilecare-agent.png">widget screenshot</a>
+            </div>
+          </article>
+
+          <article class="project-row" aria-labelledby="project-lexispro">
+            <div>
+              <span class="project-number">05</span>
+              <h3 class="project-name" id="project-lexispro">LexisPro Legal Intake Agent</h3>
+              <p class="project-description">
+                legal intake demo on the same reusable consultation-and-escalation platform.
+              </p>
+            </div>
+            <div class="project-links" aria-label="LexisPro Legal Intake Agent links">
+              <a href="https://github.com/titidintsako-bit/ai-agency" rel="noreferrer" target="_blank">GitHub</a>
+              <a href="/assets/lexispro-agent.png">widget screenshot</a>
+            </div>
+          </article>
+
+          <article class="project-row" aria-labelledby="project-nodekeep">
+            <div>
+              <span class="project-number">06</span>
+              <h3 class="project-name" id="project-nodekeep">Nodekeep</h3>
+              <p class="project-description">
+                public Vercel demo for a local-first AI workspace: model routes,
+                memory screens, and persistence flows.
+              </p>
+            </div>
+            <div class="project-links" aria-label="Nodekeep links">
+              <a href="https://nodekeep.vercel.app" rel="noreferrer" target="_blank">live demo</a>
+              <a href="/assets/nodekeep-completion.png">completion panel</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="stack" aria-labelledby="stack-title">
+        <div class="section-label">03 / stack</div>
+        <p class="stack-line" id="stack-title">
+          Python · FastAPI · React · Next.js · TypeScript · Node.js · SQL ·
+          Supabase · Ollama · Groq · Vercel · WebSockets
+        </p>
+      </section>
+
+      <section class="content-section contact-grid" id="contact" aria-labelledby="contact-title">
+        <div class="section-label">04 / contact</div>
+        <div class="contact-copy">
+          <h2 id="contact-title">Let's build the working version.</h2>
+          <div class="contact-links" aria-label="Contact links">
+            <a href="mailto:titidintsako@gmail.com">titidintsako@gmail.com</a>
+            <a href="https://x.com/titidintsako" rel="noreferrer" target="_blank">@titidintsako</a>
+            <a href="https://github.com/titidintsako-bit" rel="noreferrer" target="_blank">GitHub</a>
+          </div>
+          <p class="availability">
+            Available for: remote contract · AI tooling · early-stage product builds
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>nt.systems</span>
+      <span>Ntsako Titidi / AI Engineer</span>
+    </footer>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        document.body.classList.add("is-loaded");
+
+        const cursor = document.querySelector(".cursor-dot");
+        const projectRows = Array.from(document.querySelectorAll(".project-row"));
+
+        if (cursor && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+          document.body.classList.add("has-custom-cursor");
+
+          let targetX = window.innerWidth / 2;
+          let targetY = window.innerHeight / 2;
+          let currentX = targetX;
+          let currentY = targetY;
+          let hasPointer = false;
+          const lag = 0.19;
+
+          window.addEventListener("mousemove", (event) => {
+            targetX = event.clientX;
+            targetY = event.clientY;
+
+            if (!hasPointer) {
+              currentX = targetX;
+              currentY = targetY;
+              hasPointer = true;
+              cursor.classList.add("is-ready");
+            }
+          });
+
+          const moveCursor = () => {
+            currentX += (targetX - currentX) * lag;
+            currentY += (targetY - currentY) * lag;
+            cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(moveCursor);
+          };
+
+          moveCursor();
+
+          projectRows.forEach((row) => {
+            row.addEventListener("mouseenter", () => {
+              cursor.classList.add("is-project-hover");
+            });
+
+            row.addEventListener("mouseleave", () => {
+              cursor.classList.remove("is-project-hover");
+            });
+          });
+        }
+
+        const heroLocation = document.querySelector(".hero-location");
+        if (heroLocation) {
+          const locationText = heroLocation.textContent.trim();
+          heroLocation.setAttribute("aria-label", locationText);
+
+          if (!reduceMotion) {
+            const typedText = document.createTextNode("");
+            const cursorMark = document.createElement("span");
+            cursorMark.className = "typewriter-cursor";
+            cursorMark.textContent = "|";
+            heroLocation.replaceChildren(typedText, cursorMark);
+
+            window.setTimeout(() => {
+              let index = 0;
+              const typeNext = window.setInterval(() => {
+                index += 1;
+                typedText.data = locationText.slice(0, index);
+
+                if (index >= locationText.length) {
+                  window.clearInterval(typeNext);
+                  cursorMark.remove();
+                }
+              }, 28);
+            }, 600);
+          }
+        }
+
+        const sections = Array.from(
+          document.querySelectorAll("#about, #projects, #stack, #contact")
+        );
+
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        sections.forEach((section) => {
+          section.classList.add("section-reveal");
+          revealObserver.observe(section);
+        });
+
+        projectRows.forEach((row, index) => {
+          row.style.setProperty("--row-delay", `${index * 60}ms`);
+        });
+
+        const numberObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              const number = entry.target.querySelector(".project-number");
+              if (!number || number.dataset.counted === "true") {
+                numberObserver.unobserve(entry.target);
+                return;
+              }
+
+              number.dataset.counted = "true";
+              const target = Number.parseInt(number.dataset.target || "0", 10);
+
+              if (reduceMotion || Number.isNaN(target)) {
+                number.textContent = number.dataset.target || number.textContent;
+                numberObserver.unobserve(entry.target);
+                return;
+              }
+
+              const start = performance.now();
+              const duration = 400;
+
+              const tick = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                const value = Math.round(target * progress);
+                number.textContent = String(value).padStart(2, "0");
+
+                if (progress < 1) {
+                  requestAnimationFrame(tick);
+                } else {
+                  number.textContent = String(target).padStart(2, "0");
+                  numberObserver.unobserve(entry.target);
+                }
+              };
+
+              requestAnimationFrame(tick);
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        projectRows.forEach((row) => {
+          const number = row.querySelector(".project-number");
+          if (number) {
+            number.dataset.target = number.textContent.trim();
+            if (!reduceMotion) {
+              number.textContent = "00";
+            }
+          }
+
+          numberObserver.observe(row);
+        });
+      });
+    </script>
+  </body>
+</html>
