@@ -16,6 +16,7 @@ project presentation, links, and metadata.
 - LexisPro Legal Intake Agent: fictional law-firm receptionist demo from the same multi-client agent platform.
 - Public Pulse ZA: public-data desk with a live Vercel build and sovereign GitHub repo.
 - Stratosyn Core: deterministic infrastructure simulation frontend and public repo.
+- Parliament Horology: fictional luxury watch storefront with optimized media and a live Vercel build.
 
 ## Commands
 
