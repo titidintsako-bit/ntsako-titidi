@@ -15,6 +15,7 @@ project presentation, links, and metadata.
 - SmileCare Dental Agent: dentist-focused receptionist demo from the AutoCore/AI Agency project.
 - LexisPro Legal Intake Agent: fictional law-firm receptionist demo from the same multi-client agent platform.
 - Public Pulse ZA: public-data desk with a live Vercel build and sovereign GitHub repo.
+- MzansiPedia: South African stories, history, and culture in a public social-media-style feed.
 - Stratosyn Core: deterministic infrastructure simulation frontend and public repo.
 - Parliament Horology: fictional luxury watch storefront with optimized media and a live Vercel build.
 
