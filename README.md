@@ -18,6 +18,7 @@ project presentation, links, and metadata.
 - MzansiPedia: South African stories, history, and culture in a public social-media-style feed.
 - Stratosyn Core: deterministic infrastructure simulation frontend and public repo.
 - Parliament Horology: fictional luxury watch storefront with optimized media and a live Vercel build.
+- Moya Architects: premium architecture-studio web demo with cinematic project sections and a live Vercel build.
 
 ## Commands
 
