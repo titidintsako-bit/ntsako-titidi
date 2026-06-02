@@ -19,6 +19,7 @@ project presentation, links, and metadata.
 - Stratosyn Core: deterministic infrastructure simulation frontend and public repo.
 - Parliament Horology: fictional luxury watch storefront with optimized media and a live Vercel build.
 - Moya Architects: premium architecture-studio web demo with cinematic project sections and a live Vercel build.
+- KAIRO Sneaker Storefront: product-led sneaker storefront React template demo with a live Vercel build.
 
 ## Commands
 
