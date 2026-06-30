@@ -21,6 +21,10 @@ project presentation, links, and metadata.
 - Moya Architects: premium architecture-studio web demo with cinematic project sections and a live Vercel build.
 - KAIRO Sneaker Storefront: product-led sneaker storefront React template demo with a live Vercel build.
 - Astra Index: cinematic space-exploration React template demo with a live Vercel build.
+- PathAssist CDSS: research-only cancer detection workflow for breast H&E patches with FastAPI, React, Grad-CAM, and specialist review gates.
+- Mzansi Solar: solar, storage, and energy advisory website for South African homes and businesses.
+- Something Nutritious: Durban food business website for weekly meals, juices, and grazing boxes.
+- Ndlovu Logistics: South African freight and regional distribution website experience.
 
 ## Commands
 
