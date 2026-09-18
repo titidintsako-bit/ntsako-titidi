@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Ntsako Titidi is an AI engineer and systems builder working on local AI runtimes, deployment hygiene, and code-first product experiments."
+      content="Ntsako Titidi — Edge AI & IoT engineer, Garankuwa/Pretoria. NtsakoGPT 10.7M from scratch (1.48 val), Fall Detection YOLO11-Pose + LSTM, Traffic Eye YOLOv11 + ByteTrack, Shaka local-first edge runtime."
     />
     <meta name="author" content="Ntsako Titidi" />
-    <meta property="og:title" content="Ntsako Titidi / AI Engineer" />
+    <meta property="og:title" content="Ntsako Titidi / Edge AI & IoT Engineer" />
     <meta
       property="og:description"
-      content="Ntsako Titidi is an AI engineer and systems builder working on local AI runtimes, deployment hygiene, and code-first product experiments."
+      content="From-scratch transformers, on-device vision, local-first runtimes. 10.7M GPT, ward fall detection, aerial vehicle tracking — built in Pretoria, South Africa."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ntsako-titidi.vercel.app/" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Ntsako Titidi / AI Engineer" />
+    <meta name="twitter:title" content="Ntsako Titidi / Edge AI & IoT Engineer" />
     <meta
       name="twitter:description"
-      content="Local AI runtimes, deployment hygiene, and code-first product experiments."
+      content="10.7M GPT from scratch, YOLO11-Pose fall detection, YOLOv11 traffic tracking — edge AI from Pretoria, ZA."
     />
     <meta name="theme-color" content="#0D0D0B" />
     <link rel="canonical" href="https://ntsako-titidi.vercel.app/" />
@@ -29,7 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>Ntsako Titidi / AI Engineer</title>
+    <title>Ntsako Titidi / Edge AI &amp; IoT Engineer — From-scratch LLM + On-device Vision</title>
     <style>
       :root {
         --bg: #0d0d0b;
@@ -630,10 +630,10 @@
             Ntsako Titidi
           </h1>
           <p class="hero-role hero-reveal" style="--delay: 150ms">
-            AI Engineer / Systems Builder
+            Edge AI &amp; IoT Engineer / From-scratch LLM + On-device Vision
           </p>
           <p class="hero-location hero-reveal" style="--delay: 300ms">
-            loc: Pretoria, ZA // focus: local runtimes · agent systems · deployment
+            loc: Garankuwa · Pretoria, ZA // focus: edge inference · PyTorch · YOLO · ONNX · local runtimes
           </p>
           <div
             class="hero-links hero-reveal"
@@ -650,32 +650,71 @@
       <section class="content-section about-grid" id="about" aria-labelledby="about-title">
         <div class="section-label">01 / about</div>
         <div class="about-copy">
-          <h2 id="about-title">I turn rough ideas into working systems.</h2>
+          <h2 id="about-title">I build edge AI that runs where the data is.</h2>
           <div class="text-stack">
             <p>
-              I build practical AI tools, local runtimes, deployment surfaces,
-              and small product systems that can be opened, tested, and judged
-              by the work they do.
+              From-scratch transformers and on-device vision — no black boxes. NtsakoGPT (10.7M, Shakespeare, val 1.48) taught me every weight,
+              then I applied the same discipline to ward fall detection (YOLO11-Pose + 5-feature LSTM) and aerial vehicle tracking (YOLOv11 + ByteTrack) for IoT edge deployment.
             </p>
             <p>
-              My best work happens where product judgment and engineering meet:
-              taking a rough brief, shaping the interface, wiring the runtime,
-              and leaving behind enough evidence for someone technical to trust it.
+              Shaka ties it together: a local-first runtime where nothing leaves the device without approval. I ship with PyTorch, ONNX, FastAPI, and honest benchmarks — systems a senior engineer can audit, not just demo.
             </p>
           </div>
         </div>
       </section>
 
       <section class="content-section projects" id="projects" aria-labelledby="projects-title">
-        <div class="section-label">02 / projects</div>
+        <div class="section-label">02 / projects — edge AI &amp; IoT first</div>
         <div class="project-list">
-          <article class="project-row" aria-labelledby="project-shaka">
+          <article class="project-row" aria-labelledby="project-ntsakogpt">
             <div>
               <span class="project-number">01</span>
+              <h3 class="project-name" id="project-ntsakogpt">NtsakoGPT — 10M From Scratch</h3>
+              <p class="project-description">
+                10.7M GPT built line-by-line (no trainer) — 6L/6H/384-d, char-65, val 1.48 @1900 on Shakespeare. Reproducible generate with temp/top-k.
+              </p>
+            </div>
+            <div class="project-links" aria-label="NtsakoGPT links">
+              <a href="https://github.com/titidintsako-bit/llm-from-scratch" rel="noreferrer" target="_blank">GitHub</a>
+              <a href="https://github.com/titidintsako-bit/llm-from-scratch/releases/tag/ntsakogpt-10m-1.48" rel="noreferrer" target="_blank">Release 43MB</a>
+            </div>
+          </article>
+
+          <article class="project-row" aria-labelledby="project-fall">
+            <div>
+              <span class="project-number">02</span>
+              <h3 class="project-name" id="project-fall">Fall Detection System</h3>
+              <p class="project-description">
+                ward/corridor edge vision — YOLO11-Pose (17 kpts) → BoT-SORT → 5 biomechanical features → 2-layer LSTM + state latching (3-frame lock, 20-frame recovery), ONNX CPU.
+              </p>
+            </div>
+            <div class="project-links" aria-label="Fall Detection links">
+              <a href="https://github.com/titidintsako-bit/fall-detection-ml-project" rel="noreferrer" target="_blank">GitHub</a>
+              <a href="https://github.com/titidintsako-bit/fall-detection-ml-project#quick-start" rel="noreferrer" target="_blank">Quick start</a>
+            </div>
+          </article>
+
+          <article class="project-row" aria-labelledby="project-traffic">
+            <div>
+              <span class="project-number">03</span>
+              <h3 class="project-name" id="project-traffic">Traffic Eye — Aerial IoT</h3>
+              <p class="project-description">
+                aerial vehicle tracking — YOLOv11 + ByteTrack + homography speed/KDE heatmaps/anomalies + Flask edge dashboard. Drone-ready, Docker edge, Colab-trainable.
+              </p>
+            </div>
+            <div class="project-links" aria-label="Traffic Eye links">
+              <a href="https://github.com/titidintsako-bit/traffic-eye" rel="noreferrer" target="_blank">GitHub</a>
+              <a href="https://github.com/titidintsako-bit/traffic-eye/blob/master/DEPLOY_EDGE.md" rel="noreferrer" target="_blank">Edge deploy</a>
+            </div>
+          </article>
+
+          <article class="project-row" aria-labelledby="project-shaka">
+            <div>
+              <span class="project-number">04</span>
               <h3 class="project-name" id="project-shaka">Shaka Agent</h3>
               <p class="project-description">
-                local-first agent runtime with CLI, TUI, gateway, skills, memory,
-                and proof export.
+                local-first edge runtime with CLI, TUI, gateway, skills, memory,
+                and proof export — the pattern behind my IoT gateways.
               </p>
             </div>
             <div class="project-links" aria-label="Shaka Agent links">
@@ -686,7 +725,7 @@
 
           <article class="project-row" aria-labelledby="project-stratosyn">
             <div>
-              <span class="project-number">02</span>
+              <span class="project-number">05</span>
               <h3 class="project-name" id="project-stratosyn">Stratosyn Core</h3>
               <p class="project-description">
                 incident simulator with FastAPI control logic, WebSocket telemetry,
@@ -701,7 +740,7 @@
 
           <article class="project-row" aria-labelledby="project-public-pulse">
             <div>
-              <span class="project-number">03</span>
+              <span class="project-number">06</span>
               <h3 class="project-name" id="project-public-pulse">Public Pulse ZA</h3>
               <p class="project-description">
                 deployed public-data brief with source labels, guardrails, and
@@ -716,7 +755,7 @@
 
           <article class="project-row" aria-labelledby="project-mzansipedia">
             <div>
-              <span class="project-number">04</span>
+              <span class="project-number">07</span>
               <h3 class="project-name" id="project-mzansipedia">MzansiPedia</h3>
               <p class="project-description">
                 South African stories, history, and culture presented as a
@@ -731,7 +770,7 @@
 
           <article class="project-row" aria-labelledby="project-smilecare">
             <div>
-              <span class="project-number">05</span>
+              <span class="project-number">08</span>
               <h3 class="project-name" id="project-smilecare">SmileCare Dental Agent</h3>
               <p class="project-description">
                 dental intake demo on a reusable appointment-and-escalation agent platform.
@@ -745,7 +784,7 @@
 
           <article class="project-row" aria-labelledby="project-lexispro">
             <div>
-              <span class="project-number">06</span>
+              <span class="project-number">09</span>
               <h3 class="project-name" id="project-lexispro">LexisPro Legal Intake Agent</h3>
               <p class="project-description">
                 legal intake demo on the same reusable consultation-and-escalation platform.
@@ -759,7 +798,7 @@
 
           <article class="project-row" aria-labelledby="project-nodekeep">
             <div>
-              <span class="project-number">07</span>
+              <span class="project-number">10</span>
               <h3 class="project-name" id="project-nodekeep">Nodekeep</h3>
               <p class="project-description">
                 public Vercel demo for a local-first AI workspace: model routes,
@@ -774,7 +813,7 @@
 
           <article class="project-row" aria-labelledby="project-parliament">
             <div>
-              <span class="project-number">08</span>
+              <span class="project-number">11</span>
               <h3 class="project-name" id="project-parliament">Parliament Horology</h3>
               <p class="project-description">
                 fictional luxury watch storefront with polished brand direction,
@@ -789,7 +828,7 @@
 
           <article class="project-row" aria-labelledby="project-moya">
             <div>
-              <span class="project-number">09</span>
+              <span class="project-number">12</span>
               <h3 class="project-name" id="project-moya">Moya Architects</h3>
               <p class="project-description">
                 architecture-studio web demo with cinematic project sections,
@@ -803,7 +842,7 @@
 
           <article class="project-row" aria-labelledby="project-kairo">
             <div>
-              <span class="project-number">10</span>
+              <span class="project-number">13</span>
               <h3 class="project-name" id="project-kairo">KAIRO Sneaker Storefront</h3>
               <p class="project-description">
                 sneaker storefront React template demo with product-led visual
@@ -817,7 +856,7 @@
 
           <article class="project-row" aria-labelledby="project-astra">
             <div>
-              <span class="project-number">11</span>
+              <span class="project-number">14</span>
               <h3 class="project-name" id="project-astra">Astra Index</h3>
               <p class="project-description">
                 cinematic space-exploration React template demo with immersive
@@ -831,7 +870,7 @@
 
           <article class="project-row" aria-labelledby="project-pathassist">
             <div>
-              <span class="project-number">12</span>
+              <span class="project-number">15</span>
               <h3 class="project-name" id="project-pathassist">PathAssist CDSS</h3>
               <p class="project-description">
                 research-only cancer detection workflow for breast H&amp;E patches:
@@ -845,7 +884,7 @@
 
           <article class="project-row" aria-labelledby="project-mzansi-solar">
             <div>
-              <span class="project-number">13</span>
+              <span class="project-number">16</span>
               <h3 class="project-name" id="project-mzansi-solar">Mzansi Solar</h3>
               <p class="project-description">
                 premium solar, storage, and energy advisory website for South African
@@ -859,7 +898,7 @@
 
           <article class="project-row" aria-labelledby="project-something-nutritious">
             <div>
-              <span class="project-number">14</span>
+              <span class="project-number">17</span>
               <h3 class="project-name" id="project-something-nutritious">Something Nutritious</h3>
               <p class="project-description">
                 Durban food business site for weekly meals, fresh juices, and
@@ -873,7 +912,7 @@
 
           <article class="project-row" aria-labelledby="project-ndlovu">
             <div>
-              <span class="project-number">15</span>
+              <span class="project-number">18</span>
               <h3 class="project-name" id="project-ndlovu">Ndlovu Logistics</h3>
               <p class="project-description">
                 South African freight and regional distribution website with
@@ -890,8 +929,7 @@
       <section class="content-section" id="stack" aria-labelledby="stack-title">
         <div class="section-label">03 / stack</div>
         <p class="stack-line" id="stack-title">
-          Python · FastAPI · React · Next.js · TypeScript · Node.js · SQL ·
-          Supabase · Ollama · Groq · Vercel · WebSockets
+          PyTorch · ONNX · YOLOv11 · YOLO11-Pose · LSTM · Python · FastAPI · React · TypeScript · WebSockets · SQLite · Vercel · Docker
         </p>
       </section>
 
@@ -905,7 +943,7 @@
             <a href="https://github.com/titidintsako-bit" rel="noreferrer" target="_blank">GitHub</a>
           </div>
           <p class="availability">
-            Available for: remote contract · AI tooling · early-stage product builds
+            Available for: IoT / edge AI · junior engineer · internship · learnership · remote
           </p>
         </div>
       </section>
@@ -913,7 +951,7 @@
 
     <footer class="site-footer">
       <span>nt.systems</span>
-      <span>Ntsako Titidi / AI Engineer</span>
+      <span>Ntsako Titidi / Edge AI & IoT Engineer</span>
     </footer>
 
     <script>
