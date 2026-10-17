@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ntsako-titidi.vercel.app/sitemap.xml

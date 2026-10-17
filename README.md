@@ -1,37 +1,44 @@
-# Ntsako Titidi Portfolio
+# Ntsako Titidi — Portfolio
 
-Static portfolio update for Ntsako Titidi.
+A minimal, profile-led portfolio for Ntsako Titidi. Built with React, TypeScript, and Vite.
 
-## Scope
+The page introduces Ntsako as an agentic developer, shows three featured software projects, one additional code project, and five website examples. It links to contact, GitHub, and LinkedIn. Portfolio copy lives in `src/portfolio-data.ts`.
 
-This pass uses project evidence from local Codex workspaces.
-It preserves the existing dark technical portfolio direction and focuses on copy,
-project presentation, links, and metadata.
+The profile image is a local copy of the public LinkedIn profile photo at `public/profile/ntsako.jpg`, so the deployed page does not depend on LinkedIn's image URL.
 
-## Included Codex Projects
+Shaka is marked as work in progress. Its public GitHub repository is explicitly described as an earlier version. Website demos and concepts are labeled as such. Traffic Eye and MzansiPedia are omitted from the featured set because they derive from forks.
 
-- Nodekeep: public Vercel demo for a local-first AI workspace with screenshots and release verification notes.
-- Shaka Agent: local-first AI runtime with CLI, TUI, gateway, approvals, and proof export.
-- SmileCare Dental Agent: dentist-focused receptionist demo from the AutoCore/AI Agency project.
-- LexisPro Legal Intake Agent: fictional law-firm receptionist demo from the same multi-client agent platform.
-- Public Pulse ZA: public-data desk with a live Vercel build and sovereign GitHub repo.
-- MzansiPedia: South African stories, history, and culture in a public social-media-style feed.
-- Stratosyn Core: deterministic infrastructure simulation frontend and public repo.
-- Parliament Horology: fictional luxury watch storefront with optimized media and a live Vercel build.
-- Moya Architects: premium architecture-studio web demo with cinematic project sections and a live Vercel build.
-- KAIRO Sneaker Storefront: product-led sneaker storefront React template demo with a live Vercel build.
-- Astra Index: cinematic space-exploration React template demo with a live Vercel build.
-- PathAssist CDSS: research-only cancer detection workflow for breast H&E patches with FastAPI, React, Grad-CAM, and specialist review gates.
-- Mzansi Solar: solar, storage, and energy advisory website for South African homes and businesses.
-- Something Nutritious: Durban food business website for weekly meals, juices, and grazing boxes.
-- Ndlovu Logistics: South African freight and regional distribution website experience.
+## Local development
 
-## Commands
-
-```powershell
-npm run check
-npm run build
+```bash
+npm install
+npm run dev
 ```
 
-The build has no runtime dependencies. It copies the single-file `index.html`
-and everything in `public` into `dist`.
+## Quality checks
+
+```bash
+npm run check
+```
+
+This runs ESLint, TypeScript, and a production Vite build.
+
+The build first checks an explicit allowlist of files in `public/`. Vite copies
+everything in that directory into the published site, including files that are
+not linked from the page. Add only intentionally public assets and update
+`scripts/verify-public-assets.mjs` when a new one is approved. Unused legacy
+previews were moved to `/home/ntsako/Projects/portfolio-asset-archive/previews/`
+on this machine; that archive is outside the deployment folder.
+
+## Deployment
+
+`vercel.json` is configured for the Vite build (`npm run build`, output `dist`). Run `npm run check` before publishing. The production site is [ntsakotitidi.vercel.app](https://ntsakotitidi.vercel.app/). The source lives in [titidintsako-bit/ntsako-titidi](https://github.com/titidintsako-bit/ntsako-titidi); pushes to its `main` branch are deployed through the Vercel project.
+
+After publishing, inspect the live response headers for the configured CSP,
+`X-Content-Type-Options`, and `Cross-Origin-Opener-Policy`, and confirm that
+Vercel serves the site over HTTPS with HSTS. A clean local build and dependency
+audit do not verify deployment settings or account security.
+
+Do not add Shaka development screenshots to `public/` until they have been
+reviewed for credentials, local paths, private code, session details, and
+version accuracy. A screenshot is optional evidence, not a launch requirement.
